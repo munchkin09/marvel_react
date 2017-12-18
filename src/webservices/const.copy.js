@@ -1,0 +1,2 @@
+export const PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+export const PRIVATE_KEY = 'YOUR_PRIVATE_KEY';
