@@ -4,7 +4,7 @@ var api = require('marvel-comics-api')
 
 export function fetch(url) {
     return new Promise(function(resolve, reject) {
-        api('characters', {
+        api(url, {
             publicKey: Constants.PUBLIC_KEY,
             privateKey: Constants.PRIVATE_KEY,
             timeout: 3000,
@@ -13,7 +13,7 @@ export function fetch(url) {
             }
         }, function(err, body) {
             if(err) reject(err)
-            resolve({data: body.data.resulst, total: body.data.total})
+            resolve({data: body.data.results, total: body.data.total})
             
         })
     })

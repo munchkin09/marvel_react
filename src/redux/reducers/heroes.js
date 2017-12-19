@@ -1,4 +1,4 @@
-
+import * as types from '../types/heroes';
 
 const initialState = {
     isFetching: false,
@@ -9,17 +9,17 @@ const initialState = {
 export default function reducer(state=initialState,action={}) {
 
     switch(action.type) {
-        case 'HEROES_UPDATE_LIST':
+        case types.HEROES_UPDATE_LIST:
             return {
                 ...state,
                 list: action.value
             };
-        case 'HEROES_UPDATE_SELECTED':
+        case types.HEROES_UPDATE_SELECTED:
             return {
                 ...state,
                 item: action.value
             }
-        case 'HEROES_IS_FETCHING':
+        case types.HEROES_IS_FETCHING:
             return {
                 ...state,
                 isFecthing: action.value
