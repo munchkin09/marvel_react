@@ -20,6 +20,15 @@ class HeroesList extends Component {
         return(<View><Text>{item.name}</Text></View>)
     }
 
+    renderFooter() {
+        return <ActivityIndicator
+            animating={this.props.isFetching}
+            size='large'
+            color='#FABADA'
+            style={{marginVertical: 20}}
+        />
+    }
+
     render() {
         const list = this.props.list ? this.props.list.data : []
         return (
@@ -27,6 +36,9 @@ class HeroesList extends Component {
                 <FlatList
                     data={list}
                     renderItem={ ({item, index}) => this.renderItem(item, index) }
+                    keyExtractor={ (item,index) => item.id }
+                    extraData={this.props}
+                    ListFooterComponent={ () => this.renderFooter() }
                 />
             </View>
         )

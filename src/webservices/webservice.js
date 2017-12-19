@@ -6,10 +6,12 @@ export function fetch(url) {
     return new Promise(function(resolve, reject) {
         api(url, {
             publicKey: Constants.PUBLIC_KEY,
-            privateKey: Constants.PRIVATE_KEY,
             timeout: 3000,
             query: {
                 limit: 25,
+            },
+            headers: {
+                Referer: Constants.REFERER
             }
         }, function(err, body) {
             if(err) reject(err)

@@ -22,7 +22,7 @@ export default function reducer(state=initialState,action={}) {
         case types.HEROES_IS_FETCHING:
             return {
                 ...state,
-                isFecthing: action.value
+                isFetching: action.value
             }
         default:
             return state;
