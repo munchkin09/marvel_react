@@ -3,9 +3,10 @@ import { View, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-nativ
 import { Actions } from 'react-native-router-flux';
 
 import * as HeroesActions  from 'marvel_react/src/redux/actions/heroes'
-//import HeroesCell from './HeroesCell';
+import HeroesCell from './HeroesCell';
 
 import { connect } from 'react-redux';
+import { Colors } from '../../commons/index';
 
 class HeroesList extends Component {
 
@@ -17,7 +18,12 @@ class HeroesList extends Component {
     }
 
     renderItem(item, index) {
-        return(<View><Text>{item.name}</Text></View>)
+        return(<HeroesCell
+            item={item}
+            onSelected={ (heroe) => {
+                console.log('onSelected ', heroe)
+            }}
+        ></HeroesCell>)
     }
 
     renderFooter() {
@@ -66,8 +72,8 @@ export default connect(mapStateToProps,mapDispatchToProps)(HeroesList)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'red',
+        backgroundColor: Colors.background,
         paddingBottom: 20,
-        paddingTop: 60,
+        paddingTop: 10,
     }
 })

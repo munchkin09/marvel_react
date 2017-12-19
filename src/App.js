@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, StyleSheet } from 'react-native';
 import { Action, Scene, Router } from 'react-native-router-flux';
 
 import HeroesList from './sections/heroes/HeroesList';
-
+import { Colors } from './commons'
 /********* REDUX *********/
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
@@ -19,9 +19,7 @@ const store = createStore(reducer,applyMiddleware(thunk))
 export default class App extends Component {
 
     componentWillMount() {
-        /*
-        Aquí vamos a configurar el WS que se conecte a la API de marvel
-        */
+        StatusBar.setBarStyle('light-content')
     }
 
     render() {
@@ -32,7 +30,9 @@ export default class App extends Component {
                         <Scene
                             key={'HeroesList'}
                             component={HeroesList}
-                            hideNavBar
+                            navigationBarStyle={styles.navBar}
+                            navBarButtonColor={'white'}
+                            title={'Marvel App'}
                         />
                         {/*<Scene
                             key={'HeroeDetail'}
@@ -45,3 +45,21 @@ export default class App extends Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+    navBar: {
+        backgroundColor: Colors.navBar,
+    },
+  
+    addButtonText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+  
+    addButton: {
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+  });

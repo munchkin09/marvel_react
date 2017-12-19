@@ -30,7 +30,6 @@ export function fetchHeroesList() {
         fetch(fetchUrl)
         .then( (response) => {
             const list = response
-            console.log(list)
             dispatch(isFetchingHeroes(false))
             dispatch(updateHeroesList(list))
         })

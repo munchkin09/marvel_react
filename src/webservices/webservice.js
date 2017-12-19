@@ -8,7 +8,7 @@ export function fetch(url) {
             publicKey: Constants.PUBLIC_KEY,
             timeout: 3000,
             query: {
-                limit: 25,
+                limit: 50,
             },
             headers: {
                 Referer: Constants.REFERER
