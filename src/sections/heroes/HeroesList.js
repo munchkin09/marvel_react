@@ -6,14 +6,11 @@ import * as HeroesActions  from 'marvel_react/src/redux/actions/heroes'
 import HeroesCell from './HeroesCell';
 
 import { connect } from 'react-redux';
-import { Colors } from '../../commons/index';
+import { Colors } from '../../commons/';
 
 class HeroesList extends Component {
 
     componentWillMount() {
-        /*
-        Aquí invocaremos la función de cargar heroes del WS
-        */
         this.props.fetchHeroesList()
     }
 
@@ -21,7 +18,8 @@ class HeroesList extends Component {
         return(<HeroesCell
             item={item}
             onSelected={ (heroe) => {
-                console.log('onSelected ', heroe)
+                this.props.updateSelected(heroe)
+                
             }}
         ></HeroesCell>)
     }
@@ -63,6 +61,11 @@ const mapDispatchToProps = (dispatch,props) => {
     return {
         fetchHeroesList: () => {
             dispatch(HeroesActions.fetchHeroesList())
+        },
+        updateSelected: (heroe) => {
+            dispatch(HeroesActions.updateHeroeSelected(heroe))
+            Actions.HeroeView({title: heroe.name })
+            
         }
     }
 }

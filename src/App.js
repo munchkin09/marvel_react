@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
-import { Action, Scene, Router } from 'react-native-router-flux';
+import { Action, Scene, Router, Actions } from 'react-native-router-flux';
 
 import HeroesList from './sections/heroes/HeroesList';
+import HeroeView from './sections/heroes/HeroeView';
 import { Colors } from './commons'
+
 /********* REDUX *********/
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
@@ -34,10 +36,12 @@ export default class App extends Component {
                             navBarButtonColor={'white'}
                             title={'Marvel App'}
                         />
-                        {/*<Scene
-                            key={'HeroeDetail'}
-                            componet={HeroeDetail}
-                        />*/}
+                        <Scene
+                            key={'HeroeView'}
+                            component={HeroeView}
+                            navigationBarStyle={styles.navBar}
+                            navBarButtonColor={'white'}
+                        />
                     </Scene>
                 </Router>
             </Provider>
